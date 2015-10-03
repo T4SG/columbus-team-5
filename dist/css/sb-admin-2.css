@@ -20,6 +20,18 @@ body {
 
 }
 
+.condense {
+    width: 100%;
+}
+
+.condense50{
+    width: 150%;
+}
+
+#smaller-height {
+    min-height: 0px;
+}
+
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
