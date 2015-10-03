@@ -5626,3 +5626,18 @@ button.close {
 		display:none!important
 	}
 }
+
+.profile-picture {
+	background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    width: 125px;
+    height: 125px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.profile-info h2 {
+	padding-right: 10px;
+	display: inline-block;
+}
