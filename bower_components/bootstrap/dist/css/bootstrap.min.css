@@ -5676,6 +5676,15 @@ tr.spaceUnder td {
 .progress-text {
 	text-align: right;
 	background-color: none;
-	padding-right: 2px;
+	padding-right: 5px;
 	font-size: 1.5em;
+}
+
+.progress-boxes {
+	background: #33AD5C;
+	height: 250px;
+	border: 3px solid black;
+	/*margin-bottom: -1px;*/
+	padding: 0px 7px;
+	border-radius: 10px;
 }
