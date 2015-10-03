@@ -354,3 +354,15 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+.white {
+    background-color: #ffffff;
+}
+
+.logo-padding {
+    padding-left: 1cm;
+}
+
+.bar-padding {
+    padding-top: 22px;
+}
