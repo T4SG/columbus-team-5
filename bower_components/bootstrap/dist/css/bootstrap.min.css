@@ -5643,12 +5643,15 @@ button.close {
 	background-color: #CACACA;
 }
 
-.profile-info h3 {
-	padding-right: 10px;
-	display: inline-block;
-	font-family: Helvetica sans-serif;
+.profile-info table {
+	width: 100%;
+	font-size: 1.5em;
 }
 
-.profile-info .numbers h3 {
+table.profile-info td.number-value {
 	text-align: right;
+}
+
+tr.spaceUnder td {
+	padding-top: 10px;
 }
