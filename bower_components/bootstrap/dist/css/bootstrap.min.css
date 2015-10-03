@@ -5672,3 +5672,8 @@ tr.spaceUnder td {
 .profile-next-event h3 {
 	text-align: center;
 }
+
+.progress {
+	text-align: right;
+	background-color: none;
+}
