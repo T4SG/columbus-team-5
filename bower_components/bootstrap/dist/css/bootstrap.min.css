@@ -5634,10 +5634,21 @@ button.close {
     width: 125px;
     height: 125px;
     margin: 0 auto;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    background-size: 100%;
 }
 
-.profile-info h2 {
+.profile-picture div {
+
+	background-color: #CACACA;
+}
+
+.profile-info h3 {
 	padding-right: 10px;
 	display: inline-block;
+	font-family: Helvetica sans-serif;
+}
+
+.profile-info .numbers h3 {
+	text-align: right;
 }
