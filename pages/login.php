@@ -35,6 +35,7 @@
 <body>
 
     <?php
+    session_start();
     $servername = "localhost";
     $username = "root";
     $password = "code4good";
@@ -50,11 +51,11 @@
     $db_selected = mysqli_select_db($conn,'mysql');
 
 
-    $add = mysqli_query($conn, "INSERT INTO students (attendance, firstname, lastname, gpa, hours, id)
-    VALUES (90,'Jack','Jones',3.2,2,3);");
+    // $add = mysqli_query($conn, "INSERT INTO students (attendance, firstname, lastname, gpa, hours, id)
+    // VALUES (90,'Jack','Jones',3.2,2,3);");
 
-    $add = mysqli_query($conn, "INSERT INTO students (attendance, firstname, lastname, gpa, hours, id)
-    VALUES (90,'Sara','Bailey',3.9,100,4);");
+    // $add = mysqli_query($conn, "INSERT INTO students (attendance, firstname, lastname, gpa, hours, id)
+    // VALUES (90,'Sara','Bailey',3.9,100,4);");
 
     //execute the SQL query and return records
     $result = mysqli_query($conn, "SELECT id, firstname, lastname FROM students");
@@ -67,10 +68,12 @@
 
     // //fetch tha data from the database
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-       echo "ID:".$row['id']." Name:".$row['firstname']." 
-       ".$row['lastname']."<br>";
+       // echo "ID:".$row['id']." Name:".$row['firstname']." 
+       // ".$row['lastname']."<br>";
     }
-
+    $var = 0;
+    echo $error;
+    //$error = 'Enter your credentials please.'; 
     if ($_POST['submit']) {
         if (!$_POST['email']) $error .= "<br />Please enter your E-mail.";
         if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))  {
@@ -78,10 +81,35 @@
         }
         if (!$_POST['password']) $error .= "<br />Please enter your password.";
         if ($error) {
-            echo "There were error(s) in your login information: ".$error;
+            $error = "There were error(s) in your login information: ".$error;
         } else  {
-            
+            $pass = mysqli_real_escape_string($conn, $_POST['password']);
+            $query = "SELECT * FROM students WHERE email='".mysqli_real_escape_string($conn, $_POST['email'])."' AND pass = '".$pass."' LIMIT 1";
+            $result = mysqli_query($conn, $query);
+            $results = mysqli_num_rows($result);
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            echo $results;
+            if ($row) {
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['firstname'] = $row['firstname'];
+                $_SESSION['lastname'] = $row['lastname'];
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['gpa'] = $row['gpa'];
+                $_SESSION['hours'] = $row['hours'];
+                $_SESSION['attendance'] = $row['attendance']; 
+                if ($_SESSION['email'] == 'admin@test.com') {
+                    header('Location: http://ec2-54-147-207-171.compute-1.amazonaws.com/production/pages/tables.php');
+                } else {
+                    header('Location: http://ec2-54-147-207-171.compute-1.amazonaws.com/production/pages/index.php');              
+                }
+
+            } else if(!$results) {
+                $error = "We could not find a user with those credentials. Please try again.";
+            }
         }
+
+    } else {
+        $error = 'Enter your credentials, please.'; 
     }
 
     ?>
@@ -112,6 +140,13 @@
                             </fieldset>
                         </form>
                     </div>
+                        <?php
+                            if ($error == '' or $error == 'Enter your credentials, please.') {
+                                 echo   '<div class="alert alert-info">'.$error.'</div>';   
+                            } else {
+                                echo   '<div class="alert alert-danger">'.$error.'</div>';
+                            }
+                        ?>
                 </div>
             </div>
         </div>
