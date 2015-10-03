@@ -5673,7 +5673,8 @@ tr.spaceUnder td {
 	text-align: center;
 }
 
-.progress {
+.progress-text {
 	text-align: right;
 	background-color: none;
+	padding-right: 2px;
 }
