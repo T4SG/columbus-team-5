@@ -28,6 +28,11 @@ body {
     width: 150%;
 }
 
+.big{
+    height: 390px;
+}
+
+
 #smaller-height {
     min-height: 0px;
 }
