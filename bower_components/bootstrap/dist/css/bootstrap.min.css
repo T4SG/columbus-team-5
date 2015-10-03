@@ -5627,6 +5627,9 @@ button.close {
 	}
 }
 
+/*
+* Profile module
+*/
 .profile-picture {
 	background-repeat: no-repeat;
     background-position: 50%;
@@ -5652,6 +5655,20 @@ table.profile-info td.number-value {
 	text-align: right;
 }
 
+.profile-info h3 {
+	text-align: center;
+}
+
 tr.spaceUnder td {
 	padding-top: 10px;
+}
+
+.profile-next-event ul {
+	list-style: none;
+	padding:0; 
+	margin:0;
+}
+
+.profile-next-event h3 {
+	text-align: center;
 }
